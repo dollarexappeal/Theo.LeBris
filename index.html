@@ -6,38 +6,28 @@
     <title>Théo Le Bris - Footballeur</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #000;
             color: white;
-            scroll-behavior: smooth;
         }
-
         header {
             background-color: #ff0004;
-            color: white;
             padding: 20px;
             font-size: 28px;
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
         }
-
         nav {
             background: #1a1a1a;
             padding: 15px;
-            position: fixed;
-            width: 100%;
-            top: 70px;
-            left: 0;
-            z-index: 1000;
             display: flex;
             justify-content: center;
             gap: 20px;
@@ -50,84 +40,75 @@
             font-weight: bold;
             text-transform: uppercase;
             cursor: pointer;
-            padding: 10px;
             transition: color 0.3s;
         }
         nav button:hover {
             color: #ff0004;
         }
-
         .container {
             max-width: 800px;
-            margin: 120px auto 20px auto;
-            background: #1a1a1a;
+            margin: 50px auto;
             padding: 20px;
+            background: #1a1a1a;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
         }
-
-        .section {
-            display: none;
-            padding: 50px 20px;
-            background: #121212;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
-        .active {
-            display: block;
-        }
-
         .profile-img {
             width: 200px;
             border-radius: 50%;
             margin-top: 10px;
             border: 3px solid #ff0004;
+            cursor: pointer;
         }
-
-        h2 { color: #ff0004; }
-        p, ul { text-align: left; padding: 0 20px; }
-        ul { list-style: none; }
-        ul li {
-            background: #222;
+        .section {
+            display: none;
+            padding: 20px;
+        }
+        .photo-gallery img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
             margin: 5px;
-            padding: 10px;
             border-radius: 5px;
-            border: 1px solid #ff0004;
-        }
-        footer {
-            margin-top: 20px;
-            padding: 10px;
-            background: #ff0004;
-            color: black;
+            border: 2px solid #ff0004;
         }
     </style>
 </head>
 <body>
 
     <header>
-        Théo Le Bris
+        Théo Le Bris - Footballeur Professionnel
     </header>
-
+    
     <nav>
         <button onclick="showSection('biographie')">Biographie</button>
         <button onclick="showSection('carriere')">Carrière</button>
         <button onclick="showSection('statistiques')">Statistiques</button>
         <button onclick="showSection('palmares')">Palmarès</button>
     </nav>
-
+    
     <div class="container">
-        <img class="profile-img" src="https://medias.lequipe.fr/img-photo-jpg/theo-le-bris-jeudi-au-centre-d-entrainement-du-fc-lorient-b-le-bars-l-equipe/1500000001929931/367:29,1642:1304-1200-1200-75/b2c38.jpg" alt="Théo Le Bris">
-
-        <div id="biographie" class="section active">
-            <h2>Biographie</h2>
-            <p>Théo Le Bris est un footballeur français évoluant au poste de milieu de terrain. Né le 1er mars 2002, il est connu pour sa vision du jeu et sa technique.</p>
+        <img class="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Football_image.png/600px-Football_image.png" alt="Théo Le Bris" onclick="showSection('accueil')">
+        <div id="accueil" class="section" style="display: block;">
+            <h2>Club actuel</h2>
+            <p>FC Lorient</p>
         </div>
-
+        <div id="biographie" class="section">
+            <h2>Biographie</h2>
+            <p>Théo Le Bris est un footballeur français évoluant au poste de milieu de terrain.</p>
+            <div class="photo-gallery">
+                <img src="#" alt="Biographie - Image 1">
+                <img src="#" alt="Biographie - Image 2">
+            </div>
+        </div>
         <div id="carriere" class="section">
             <h2>Carrière</h2>
             <p>Il a rejoint le centre de formation du FC Lorient avant d'intégrer l'équipe professionnelle.</p>
+            <div class="photo-gallery">
+                <img src="#" alt="Carrière - Image 1">
+                <img src="#" alt="Carrière - Image 2">
+            </div>
         </div>
-
         <div id="statistiques" class="section">
             <h2>Statistiques</h2>
             <ul>
@@ -137,24 +118,27 @@
                 <li>Date de naissance : 1er mars 2002</li>
             </ul>
         </div>
-
         <div id="palmares" class="section">
             <h2>Palmarès</h2>
-            <p>À ce jour, Théo Le Bris continue de progresser et aspire à enrichir son palmarès.</p>
+            <p>Théo Le Bris continue de progresser et aspire à enrichir son palmarès.</p>
+            <div class="photo-gallery">
+                <img src="#" alt="Palmarès - Image 1">
+                <img src="#" alt="Palmarès - Image 2">
+            </div>
         </div>
     </div>
 
     <footer>
         © 2025 - Page non officielle sur Théo Le Bris
     </footer>
-
+    
     <script>
         function showSection(sectionId) {
-            let sections = document.querySelectorAll('.section');
-            sections.forEach(section => section.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
         }
     </script>
-
 </body>
 </html>
