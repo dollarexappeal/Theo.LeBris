@@ -7,15 +7,22 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
 
-        body {
-            font-family: Arial, sans-serif;
+        /* Réinitialisation et style général */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             text-align: center;
             background-color: #000;
             color: white;
             scroll-behavior: smooth;
         }
+
+        /* En-tête */
         header {
             background-color: #ff0004;
             color: white;
@@ -23,87 +30,153 @@
             font-size: 28px;
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
+
+        /* Barre de navigation */
         nav {
             background: #1a1a1a;
-            padding: 10px;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 70px;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
-        nav button {
-            background: #ff0004;
+
+        nav a {
             color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
+            text-decoration: none;
             font-size: 18px;
+            font-weight: bold;
             text-transform: uppercase;
-            border-radius: 5px;
+            padding: 10px;
+            transition: color 0.3s;
         }
-        nav button:hover {
-            background: #cc0003;
+
+        nav a:hover {
+            color: #ff0004;
         }
-        .section {
-            display: none;
+
+        /* Contenu principal */
+        .container {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 150px auto 20px auto; /* Correction de la marge */
             background: #1a1a1a;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
         }
-        .active {
-            display: block;
+
+        /* Style des sections */
+        .section {
+            padding: 50px 20px;
+            background: #121212;
+            margin-top: 20px;
+            border-radius: 10px;
         }
+
+        /* Image du joueur */
+        .profile-img {
+            width: 200px;
+            border-radius: 50%;
+            margin-top: 10px;
+            border: 3px solid #ff0004;
+        }
+
+        /* Titres */
+        h2 {
+            color: #ff0004;
+            margin-top: 50px;
+        }
+
+        /* Listes et textes */
+        p, ul {
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #222;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ff0004;
+        }
+
+        /* Pied de page */
         footer {
             margin-top: 20px;
             padding: 10px;
             background: #ff0004;
             color: black;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
+    <!-- En-tête -->
     <header>
         Théo Le Bris - Footballeur Professionnel
     </header>
 
+    <!-- Menu de navigation -->
     <nav>
-        <button onclick="showSection('biographie')">Biographie</button>
-        <button onclick="showSection('carriere')">Carrière</button>
-        <button onclick="showSection('stats')">Statistiques</button>
+        <a href="#biographie">Biographie</a>
+        <a href="#carriere">Carrière</a>
+        <a href="#statistiques">Statistiques</a>
+        <a href="#palmares">Palmarès</a>
     </nav>
 
-    <div id="biographie" class="section active">
-        <h2>Biographie</h2>
-        <p>Théo Le Bris est un footballeur français évoluant au poste de milieu de terrain.</p>
+    <!-- Contenu principal -->
+    <div class="container">
+        <img class="profile-img" 
+             src="https://medias.lequipe.fr/img-photo-jpg/theo-le-bris-jeudi-au-centre-d-entrainement-du-fc-lorient-b-le-bars-l-equipe/1500000001929931/367:29,1642:1304-1200-1200-75/b2c38.jpg" 
+             alt="Théo Le Bris">
+        
+        <div id="biographie" class="section">
+            <h2>Biographie</h2>
+            <p>Théo Le Bris est un footballeur français évoluant au poste de milieu de terrain. Né le 1er mars 2002, il est connu pour sa vision du jeu et sa technique.</p>
+        </div>
+
+        <div id="carriere" class="section">
+            <h2>Carrière</h2>
+            <p>Il a rejoint le centre de formation du FC Lorient avant d'intégrer l'équipe professionnelle. Depuis ses débuts, il a su s'imposer comme un élément clé du milieu de terrain.</p>
+        </div>
+
+        <div id="statistiques" class="section">
+            <h2>Statistiques</h2>
+            <ul>
+                <li>Club actuel : FC Lorient</li>
+                <li>Poste : Milieu de terrain</li>
+                <li>Numéro : 37</li>
+                <li>Date de naissance : 1er mars 2002</li>
+            </ul>
+        </div>
+
+        <div id="palmares" class="section">
+            <h2>Palmarès</h2>
+            <p>À ce jour, Théo Le Bris continue de progresser et aspire à enrichir son palmarès avec de nombreux trophées.</p>
+        </div>
     </div>
 
-    <div id="carriere" class="section">
-        <h2>Carrière</h2>
-        <p>Théo a commencé sa carrière au FC Lorient où il a rapidement montré son talent.</p>
-    </div>
-
-    <div id="stats" class="section">
-        <h2>Statistiques</h2>
-        <ul>
-            <li>Club actuel : FC Lorient</li>
-            <li>Poste : Milieu de terrain</li>
-            <li>Numéro : 37</li>
-            <li>Date de naissance : 1er mars 2002</li>
-        </ul>
-    </div>
-
+    <!-- Pied de page -->
     <footer>
         © 2025 - Page non officielle sur Théo Le Bris
     </footer>
 
-    <script>
-        function showSection(sectionId) {
-            let sections = document.querySelectorAll('.section');
-            sections.forEach(section => section.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-        }
-    </script>
 </body>
 </html>
