@@ -14,6 +14,7 @@
             text-align: center;
             background-color: #000;
             color: white;
+            scroll-behavior: smooth;
         }
         header {
             background-color: #ff0004;
@@ -22,10 +23,34 @@
             font-size: 28px;
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            margin-top: 70px;
+            background: #1a1a1a;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 70px;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        nav a:hover {
+            color: #ff0004;
         }
         .container {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 120px auto 20px auto;
             background: #1a1a1a;
             padding: 20px;
             border-radius: 10px;
@@ -39,6 +64,10 @@
         }
         h2 {
             color: #ff0004;
+            margin-top: 50px;
+        }
+        p, ul {
+            text-align: left;
         }
         ul {
             list-style: none;
@@ -51,39 +80,9 @@
             border-radius: 5px;
             border: 1px solid #ff0004;
         }
+        .section {
+            padding: 50px 20px;
+        }
         footer {
             margin-top: 20px;
             padding: 10px;
-            background: #ff0004;
-            color: black;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        Théo Le Bris
-    </header>
-
-    <div class="container">
-        <img src="https://medias.lequipe.fr/img-photo-jpg/theo-le-bris-jeudi-au-centre-d-entrainement-du-fc-lorient-b-le-bars-l-equipe/1500000001929931/367:29,1642:1304-1200-1200-75/b2c38.jpg" 
-             alt="Théo Le Bris">
-        
-        <h2>Biographie</h2>
-        <p>Théo Le Bris est un footballeur français évoluant au poste de milieu de terrain.</p>
-        
-        <h2>Statistiques</h2>
-        <ul>
-            <li>Club actuel : FC Lorient</li>
-            <li>Poste : Milieu de terrain</li>
-            <li>Numéro : 37</li>
-            <li>Date de naissance : 1er mars 2002</li>
-        </ul>
-    </div>
-
-    <footer>
-        © 2025 - Page non officielle sur Théo Le Bris
-    </footer>
-
-</body>
-</html>
