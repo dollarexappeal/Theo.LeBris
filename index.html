@@ -7,13 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
 
-        /* Réinitialisation et style général */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -22,7 +16,6 @@
             scroll-behavior: smooth;
         }
 
-        /* En-tête */
         header {
             background-color: #ff0004;
             color: white;
@@ -37,7 +30,6 @@
             z-index: 1000;
         }
 
-        /* Barre de navigation */
         nav {
             background: #1a1a1a;
             padding: 15px;
@@ -50,40 +42,41 @@
             justify-content: center;
             gap: 20px;
         }
-
-        nav a {
+        nav button {
+            background: none;
+            border: none;
             color: white;
-            text-decoration: none;
             font-size: 18px;
             font-weight: bold;
             text-transform: uppercase;
+            cursor: pointer;
             padding: 10px;
             transition: color 0.3s;
         }
-
-        nav a:hover {
+        nav button:hover {
             color: #ff0004;
         }
 
-        /* Contenu principal */
         .container {
             max-width: 800px;
-            margin: 150px auto 20px auto; /* Correction de la marge */
+            margin: 120px auto 20px auto;
             background: #1a1a1a;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
         }
 
-        /* Style des sections */
         .section {
+            display: none;
             padding: 50px 20px;
             background: #121212;
             margin-top: 20px;
             border-radius: 10px;
         }
+        .active {
+            display: block;
+        }
 
-        /* Image du joueur */
         .profile-img {
             width: 200px;
             border-radius: 50%;
@@ -91,23 +84,9 @@
             border: 3px solid #ff0004;
         }
 
-        /* Titres */
-        h2 {
-            color: #ff0004;
-            margin-top: 50px;
-        }
-
-        /* Listes et textes */
-        p, ul {
-            text-align: left;
-            padding: 0 20px;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
+        h2 { color: #ff0004; }
+        p, ul { text-align: left; padding: 0 20px; }
+        ul { list-style: none; }
         ul li {
             background: #222;
             margin: 5px;
@@ -115,46 +94,38 @@
             border-radius: 5px;
             border: 1px solid #ff0004;
         }
-
-        /* Pied de page */
         footer {
             margin-top: 20px;
             padding: 10px;
             background: #ff0004;
             color: black;
-            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- En-tête -->
     <header>
         Théo Le Bris - Footballeur Professionnel
     </header>
 
-    <!-- Menu de navigation -->
     <nav>
-        <a href="#biographie">Biographie</a>
-        <a href="#carriere">Carrière</a>
-        <a href="#statistiques">Statistiques</a>
-        <a href="#palmares">Palmarès</a>
+        <button onclick="showSection('biographie')">Biographie</button>
+        <button onclick="showSection('carriere')">Carrière</button>
+        <button onclick="showSection('statistiques')">Statistiques</button>
+        <button onclick="showSection('palmares')">Palmarès</button>
     </nav>
 
-    <!-- Contenu principal -->
     <div class="container">
-        <img class="profile-img" 
-             src="https://medias.lequipe.fr/img-photo-jpg/theo-le-bris-jeudi-au-centre-d-entrainement-du-fc-lorient-b-le-bars-l-equipe/1500000001929931/367:29,1642:1304-1200-1200-75/b2c38.jpg" 
-             alt="Théo Le Bris">
-        
-        <div id="biographie" class="section">
+        <img class="profile-img" src="https://medias.lequipe.fr/img-photo-jpg/theo-le-bris-jeudi-au-centre-d-entrainement-du-fc-lorient-b-le-bars-l-equipe/1500000001929931/367:29,1642:1304-1200-1200-75/b2c38.jpg" alt="Théo Le Bris">
+
+        <div id="biographie" class="section active">
             <h2>Biographie</h2>
             <p>Théo Le Bris est un footballeur français évoluant au poste de milieu de terrain. Né le 1er mars 2002, il est connu pour sa vision du jeu et sa technique.</p>
         </div>
 
         <div id="carriere" class="section">
             <h2>Carrière</h2>
-            <p>Il a rejoint le centre de formation du FC Lorient avant d'intégrer l'équipe professionnelle. Depuis ses débuts, il a su s'imposer comme un élément clé du milieu de terrain.</p>
+            <p>Il a rejoint le centre de formation du FC Lorient avant d'intégrer l'équipe professionnelle.</p>
         </div>
 
         <div id="statistiques" class="section">
@@ -169,14 +140,21 @@
 
         <div id="palmares" class="section">
             <h2>Palmarès</h2>
-            <p>À ce jour, Théo Le Bris continue de progresser et aspire à enrichir son palmarès avec de nombreux trophées.</p>
+            <p>À ce jour, Théo Le Bris continue de progresser et aspire à enrichir son palmarès.</p>
         </div>
     </div>
 
-    <!-- Pied de page -->
     <footer>
         © 2025 - Page non officielle sur Théo Le Bris
     </footer>
+
+    <script>
+        function showSection(sectionId) {
+            let sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
