@@ -7,6 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
 
+        /* Style général */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -16,6 +17,8 @@
             color: white;
             scroll-behavior: smooth;
         }
+
+        /* Style de l'en-tête */
         header {
             background-color: #ff0004;
             color: white;
@@ -26,30 +29,10 @@
             position: fixed;
             width: 100%;
             top: 0;
+            left: 0;
             z-index: 1000;
         }
+
+        /* Barre de navigation */
         nav {
-            background: #1a1a1a;
-            padding: 15px;
-            position: fixed;
-            width: 100%;
-            top: 70px;
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #ff0004;
-        }
-        .container {
-            max-width: 800px;
-            margin: 150px auto 20px auto; /* Augmente l'espace pour éviter le chevau
+            background:
