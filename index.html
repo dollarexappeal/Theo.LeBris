@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Théo Le Bris - Footballeur</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
 
@@ -18,10 +19,12 @@
             background-color: #000;
             color: white;
             display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .sidebar {
-            width: 220px;
+            width: 250px;
             background: #1a1a1a;
             padding: 20px;
             height: 100vh;
@@ -31,6 +34,21 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            box-shadow: 4px 0 10px rgba(255, 0, 4, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .menu-toggle {
+            display: none;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ff0004;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
         }
 
         .sidebar a {
@@ -44,13 +62,13 @@
             text-align: center;
         }
 
-        .sidebar a:hover, .sidebar a:active {
+        .sidebar a:hover {
             background: #ff0004;
             transform: scale(1.05);
         }
 
         .main-content {
-            margin-left: 240px;
+            margin-left: 270px;
             width: 100%;
             text-align: center;
             padding: 20px;
@@ -72,6 +90,11 @@
             margin-top: 20px;
             border: 4px solid #ff0004;
             cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
         }
 
         .section {
@@ -80,32 +103,11 @@
             background: #121212;
             border-radius: 10px;
             margin-top: 20px;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         #home {
             display: block;
-        }
-
-        .stats-list {
-            text-align: left;
-            margin: 20px auto;
-            width: fit-content;
-        }
-
-        .stats-list p {
-            margin: 10px 0;
-            padding: 10px;
-            background: #222;
-            border-radius: 5px;
-            border: 1px solid #ff0004;
-        }
-
-        .photo-container {
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
         }
 
         .photo-container img {
@@ -115,65 +117,56 @@
             border-radius: 5px;
             border: 2px solid #ff0004;
             transition: transform 0.3s ease-in-out;
+            cursor: pointer;
         }
 
         .photo-container img:hover {
             transform: scale(1.05);
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
     <div class="sidebar">
         <a href="#" onclick="showSection('home')">Accueil</a>
         <a href="#" onclick="showSection('biographie')">Biographie</a>
         <a href="#" onclick="showSection('carriere')">Carrière</a>
         <a href="#" onclick="showSection('statistiques')">Statistiques</a>
         <a href="#" onclick="showSection('palmares')">Palmarès</a>
-        <a href="#" onclick="showSection('photos')">Photos</a>
     </div>
 
     <div class="main-content">
         <div class="header">Théo Le Bris - Footballeur</div>
-        <img class="profile-img" src="https://medias.lequipe.fr/img-photo-jpg/theo-le-bris-jeudi-au-centre-d-entrainement-du-fc-lorient-b-le-bars-l-equipe/1500000001929931/367:29,1642:1304-1200-1200-75/b2c38.jpg" alt="Théo Le Bris" onclick="showSection('home')">
+        <img class="profile-img" src="https://medias.lequipe.fr/img-photo.jpg" alt="Théo Le Bris" onclick="showSection('home')">
         
         <div id="home" class="section">
             <h2>Bienvenue</h2>
-            <p>Théo Le Bris, footballeur professionnel au FC Lorient prêté jusqu'en fin de saison 2024-2025 à L'En Avant Guingamp.</p>
-        </div>
-
-        <div id="biographie" class="section">
-            <h2>Biographie</h2>
-            <p>Issu du centre de formation de Lorient, Le Bris a commencé sa carrière senior avec l'équipe réserve et a commencé à s'entraîner avec l'équipe première en 2021.</p>
-            <div class="photo-container"></div>
-        </div>
-
-        <div id="carriere" class="section">
-            <h2>Carrière</h2>
-            <p>Joueur du FC Lorient prêté sans option d’achat à L'En Avant Guingamp jusqu'à la fin de saison.</p>
-            <div class="photo-container"></div>
+            <p>Théo Le Bris, footballeur professionnel.</p>
         </div>
 
         <div id="statistiques" class="section">
             <h2>Statistiques</h2>
-            <div class="stats-list">
-                <p><strong>Saison 2024/2025</strong></p>
-                <p>Matchs joués : 12</p>
-                <p>Minutes jouées : 290</p>
-                <p>Buts : 2</p>
-                <p>Passes décisives : 0</p>
-                <p>Note moyenne : 6.65 (FotMob)</p>
-            </div>
-            <div class="photo-container">
-                <img src="https://media.letelegramme.fr/api/v1/images/view/67a797204419390c6144d48b/web_golden_xl/67a797204419390c6144d48b.1" alt="Théo Le Bris maillot EAG">
-            </div>
-        </div>
-
-        <div id="palmares" class="section">
-            <h2>Palmarès</h2>
-            <p>Tournoi Maurice Revello (France U20)</p>
-            <div class="photo-container">
-                <img src="https://www.fclorient.bzh/voy_content/uploads/2022/06/theo-le-bris.jpg" alt="Théo Le Bris maillot équipe de France">
-            </div>
+            <canvas id="statsChart" width="400" height="200"></canvas>
         </div>
     </div>
 
@@ -182,11 +175,27 @@
             document.querySelectorAll('.section').forEach(section => {
                 section.style.display = 'none';
             });
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.style.display = 'block';
-            }
+            document.getElementById(sectionId).style.display = 'block';
         }
+
+        function toggleMenu() {
+            document.querySelector('.sidebar').classList.toggle('active');
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById('statsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Matchs joués', 'Minutes jouées', 'Buts', 'Passes'],
+                    datasets: [{
+                        label: 'Statistiques',
+                        data: [12, 290, 2, 0],
+                        backgroundColor: ['red', 'blue', 'green', 'purple']
+                    }]
+                }
+            });
+        });
     </script>
 </body>
 </html>
