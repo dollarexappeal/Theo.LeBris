@@ -29,13 +29,13 @@
             padding: 20px;
             height: 100vh;
             position: fixed;
-            left: 0;
+            left: -100%;
             top: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             box-shadow: 4px 0 10px rgba(255, 0, 4, 0.5);
-            transition: transform 0.3s ease-in-out;
+            transition: left 0.3s ease-in-out;
         }
 
         .menu-toggle {
@@ -51,151 +51,4 @@
             border-radius: 5px;
         }
 
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            margin: 15px 0;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background 0.3s, transform 0.2s;
-            text-align: center;
-        }
-
-        .sidebar a:hover {
-            background: #ff0004;
-            transform: scale(1.05);
-        }
-
-        .main-content {
-            margin-left: 270px;
-            width: 100%;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .header {
-            position: sticky;
-            top: 0;
-            background-color: #ff0004;
-            padding: 15px;
-            font-size: 28px;
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-        }
-
-        .profile-img {
-            width: 220px;
-            border-radius: 50%;
-            margin-top: 20px;
-            border: 4px solid #ff0004;
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.1);
-        }
-
-        .section {
-            display: none;
-            padding: 20px;
-            background: #121212;
-            border-radius: 10px;
-            margin-top: 20px;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        #home {
-            display: block;
-        }
-
-        .photo-container img {
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 5px;
-            border: 2px solid #ff0004;
-            transition: transform 0.3s ease-in-out;
-            cursor: pointer;
-        }
-
-        .photo-container img:hover {
-            transform: scale(1.05);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .sidebar.active {
-                transform: translateX(0);
-            }
-            .main-content {
-                margin-left: 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
-    <div class="sidebar">
-        <a href="#" onclick="showSection('home')">Accueil</a>
-        <a href="#" onclick="showSection('biographie')">Biographie</a>
-        <a href="#" onclick="showSection('carriere')">Carrière</a>
-        <a href="#" onclick="showSection('statistiques')">Statistiques</a>
-        <a href="#" onclick="showSection('palmares')">Palmarès</a>
-    </div>
-
-    <div class="main-content">
-        <div class="header">Théo Le Bris - Footballeur</div>
-        <img class="profile-img" src="https://medias.lequipe.fr/img-photo.jpg" alt="Théo Le Bris" onclick="showSection('home')">
-        
-        <div id="home" class="section">
-            <h2>Bienvenue</h2>
-            <p>Théo Le Bris, footballeur professionnel.</p>
-        </div>
-
-        <div id="statistiques" class="section">
-            <h2>Statistiques</h2>
-            <canvas id="statsChart" width="400" height="200"></canvas>
-        </div>
-    </div>
-
-    <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
-        }
-
-        function toggleMenu() {
-            document.querySelector('.sidebar').classList.toggle('active');
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const ctx = document.getElementById('statsChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Matchs joués', 'Minutes jouées', 'Buts', 'Passes'],
-                    datasets: [{
-                        label: 'Statistiques',
-                        data: [12, 290, 2, 0],
-                        backgroundColor: ['red', 'blue', 'green', 'purple']
-                    }]
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+    
