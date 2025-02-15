@@ -20,77 +20,74 @@
             display: flex;
         }
 
-        /* Barre de navigation latérale */
         .sidebar {
             width: 200px;
             background: #1a1a1a;
+            padding: 20px;
             height: 100vh;
             position: fixed;
-            top: 0;
             left: 0;
+            top: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 50px;
         }
 
         .sidebar a {
             color: white;
             text-decoration: none;
             font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-            padding: 15px;
-            width: 100%;
+            margin: 15px 0;
+            display: block;
             text-align: center;
-            transition: background 0.3s;
+            transition: color 0.3s;
         }
 
         .sidebar a:hover {
-            background: #ff0004;
+            color: #ff0004;
         }
 
-        /* Contenu principal */
         .main-content {
-            margin-left: 200px;
+            margin-left: 220px;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: #ff0004;
+            padding: 15px;
+            font-size: 28px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
         }
 
         .profile-img {
-            width: 250px;
+            width: 200px;
             border-radius: 50%;
+            margin-top: 20px;
             border: 3px solid #ff0004;
             cursor: pointer;
         }
 
-        h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 36px;
+        .section {
+            display: none;
+            padding: 20px;
+            background: #121212;
+            border-radius: 10px;
             margin-top: 20px;
         }
 
-        .section {
-            display: none;
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-        }
-
-        .gallery img {
-            width: 100px;
-            height: 100px;
-            margin: 5px;
-            border-radius: 5px;
+        #home {
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="sidebar">
+        <a href="#" onclick="showSection('home')">Accueil</a>
         <a href="#" onclick="showSection('biographie')">Biographie</a>
         <a href="#" onclick="showSection('carriere')">Carrière</a>
         <a href="#" onclick="showSection('statistiques')">Statistiques</a>
@@ -98,58 +95,47 @@
         <a href="#" onclick="showSection('photos')">Photos</a>
     </div>
 
-    <div class="main-content" id="home">
-        <img class="profile-img" src="https://medias.lequipe.fr/img-photo-jpg/theo-le-bris-jeudi-au-centre-d-entrainement-du-fc-lorient-b-le-bars-l-equipe/1500000001929931/367:29,1642:1304-1200-1200-75/b2c38.jpg" alt="Théo Le Bris" onclick="showHome()">
-        <h1>Théo Le Bris</h1>
-    </div>
+    <div class="main-content">
+        <div class="header">Théo Le Bris - Footballeur</div>
+        <img class="profile-img" src="https://medias.lequipe.fr/img-photo-jpg/theo-le-bris-jeudi-au-centre-d-entrainement-du-fc-lorient-b-le-bars-l-equipe/1500000001929931/367:29,1642:1304-1200-1200-75/b2c38.jpg" alt="Théo Le Bris" onclick="showSection('home')">
+        
+        <div id="home" class="section">
+            <h2>Bienvenue</h2>
+            <p>Cliquez sur les onglets pour en savoir plus sur Théo Le Bris.</p>
+        </div>
 
-    <div id="biographie" class="section">
-        <h2>Biographie</h2>
-        <p>Théo Le Bris est un footballeur français évoluant au poste de milieu de terrain.</p>
-    </div>
+        <div id="biographie" class="section">
+            <h2>Biographie</h2>
+            <p>Théo Le Bris est un footballeur français évoluant au poste de milieu de terrain.</p>
+        </div>
 
-    <div id="carriere" class="section">
-        <h2>Carrière</h2>
-        <p>Il a rejoint le centre de formation du FC Lorient avant d'intégrer l'équipe professionnelle.</p>
-    </div>
+        <div id="carriere" class="section">
+            <h2>Carrière</h2>
+            <p>Carrière et clubs de Théo Le Bris.</p>
+        </div>
 
-    <div id="statistiques" class="section">
-        <h2>Statistiques</h2>
-        <ul>
-            <li>Club actuel : FC Lorient</li>
-            <li>Poste : Milieu de terrain</li>
-            <li>Numéro : 37</li>
-        </ul>
-    </div>
+        <div id="statistiques" class="section">
+            <h2>Statistiques</h2>
+            <p>Statistiques de la carrière de Théo Le Bris.</p>
+        </div>
 
-    <div id="palmares" class="section">
-        <h2>Palmarès</h2>
-        <p>Théo Le Bris continue de progresser et aspire à enrichir son palmarès.</p>
-    </div>
+        <div id="palmares" class="section">
+            <h2>Palmarès</h2>
+            <p>Les titres remportés par Théo Le Bris.</p>
+        </div>
 
-    <div id="photos" class="section">
-        <h2>Photos</h2>
-        <div class="gallery">
-            <img src="#" alt="Photo 1">
-            <img src="#" alt="Photo 2">
-            <img src="#" alt="Photo 3">
+        <div id="photos" class="section">
+            <h2>Photos</h2>
+            <p>Galerie de photos mise à jour quotidiennement.</p>
         </div>
     </div>
 
     <script>
         function showSection(sectionId) {
-            document.getElementById('home').style.display = 'none';
             document.querySelectorAll('.section').forEach(section => {
                 section.style.display = 'none';
             });
             document.getElementById(sectionId).style.display = 'block';
-        }
-
-        function showHome() {
-            document.getElementById('home').style.display = 'flex';
-            document.querySelectorAll('.section').forEach(section => {
-                section.style.display = 'none';
-            });
         }
     </script>
 </body>
