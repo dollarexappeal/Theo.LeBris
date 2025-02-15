@@ -107,38 +107,6 @@
         .photo-container img:hover {
             transform: scale(1.05);
         }
-
-        /* Style du modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Image dans le modal */
-        .modal-content {
-            max-width: 80%;
-            max-height: 80%;
-            border-radius: 10px;
-        }
-
-        /* Bouton pour fermer */
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -155,50 +123,43 @@
         <div class="header">Théo Le Bris - Footballeur</div>
         <img class="profile-img" src="https://medias.lequipe.fr/img-photo-jpg/theo-le-bris-jeudi-au-centre-d-entrainement-du-fc-lorient-b-le-bars-l-equipe/1500000001929931/367:29,1642:1304-1200-1200-75/b2c38.jpg" alt="Théo Le Bris" onclick="showSection('home')">
 
-        <div id="photos" class="section">
-            <h2>Photos</h2>
+        <div id="home" class="section">
+            <h2>Bienvenue</h2>
+            <p>Théo Le Bris, footballeur professionnel au FC Lorient prêté jusqu'en fin de saison 2024-2025 à L'En Avant Guingamp.</p>
+        </div>
+
+        <div id="biographie" class="section">
+            <h2>Biographie</h2>
+            <p>Issu du centre de formation de Lorient, Le Bris a commencé sa carrière senior avec l'équipe réserve et a commencé à s'entraîner avec l'équipe première en 2021.</p>
+        </div>
+
+        <div id="carriere" class="section">
+            <h2>Carrière</h2>
+            <p>Joueur du FC Lorient prêté sans option d’achat à L'En Avant Guingamp jusqu'à la fin de saison.</p>
+        </div>
+
+        <div id="statistiques" class="section">
+            <h2>Statistiques</h2>
+            <div class="stats-list">
+                <p><strong>Saison 2024/2025</strong></p>
+                <p>Matchs joués : 12</p>
+                <p>Minutes jouées : 290</p>
+                <p>Buts : 2</p>
+                <p>Passes décisives : 0</p>
+                <p>Note moyenne : 6.65 (FotMob)</p>
+            </div>
             <div class="photo-container">
-                <img src="https://www.fclorient.bzh/voy_content/uploads/2022/08/05-a9100634.jpg" alt="Image 1">
-                <img src="https://medias.lequipe.fr/img-photo-jpg/theo-le-bris-jeudi-au-centre-d-entrainement-du-fc-lorient-b-le-bars-l-equipe/1500000001929931/367:29,1642:1304-1200-1200-75/b2c38.jpg" alt="Image 2">
-                <img src="https://media.letelegramme.fr/api/v1/images/view/637f958b7de3c917a50b735c/web_golden_xl/637f958b7de3c917a50b735c.1" alt="Image 3">
-                <img src="https://media.ouest-france.fr/v1/pictures/MjAyMjAzMjUyMjYyZDI4ZjBkZjUxZmQ3ZTc2MTFmZDFhNjlkMWE?width=1260&height=708&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=f18505755127b3a93116a234ec40860f763b75725023d4aaf29d3f56451234dd" alt="Image 4">
+                <img src="https://media.letelegramme.fr/api/v1/images/view/67a797204419390c6144d48b/web_golden_xl/67a797204419390c6144d48b.1" alt="Théo Le Bris maillot EAG">
+            </div>
+        </div>
+
+        <div id="palmares" class="section">
+            <h2>Palmarès</h2>
+            <p>Tournoi Maurice Revello (France U20)</p>
+            <div class="photo-container">
+                <img src="https://www.fclorient.bzh/voy_content/uploads/2022/06/theo-le-bris.jpg" alt="Théo Le Bris maillot équipe de France">
             </div>
         </div>
     </div>
-
-    <!-- Modal pour afficher l'image en grand -->
-    <div id="modal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modal-img">
-    </div>
-
-    <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.style.display = 'none';
-            });
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.style.display = 'block';
-            }
-        }
-
-        function openModal(imgSrc) {
-            document.getElementById("modal").style.display = "flex";
-            document.getElementById("modal-img").src = imgSrc;
-        }
-
-        function closeModal() {
-            document.getElementById("modal").style.display = "none";
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".photo-container img").forEach(img => {
-                img.addEventListener("click", function () {
-                    openModal(this.src);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
