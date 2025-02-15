@@ -38,16 +38,15 @@
             text-decoration: none;
             font-size: 20px;
             margin: 15px 0;
-            display: block;
-            text-align: center;
             padding: 10px;
             border-radius: 5px;
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, transform 0.2s;
+            text-align: center;
         }
 
-        .sidebar a:hover {
+        .sidebar a:hover, .sidebar a:active {
             background: #ff0004;
-            color: white;
+            transform: scale(1.05);
         }
 
         .main-content {
@@ -115,6 +114,11 @@
             object-fit: cover;
             border-radius: 5px;
             border: 2px solid #ff0004;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .photo-container img:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -139,17 +143,14 @@
 
         <div id="biographie" class="section">
             <h2>Biographie</h2>
-            <p>Issu du centre de formation de Lorient, Le Bris a commencé sa carrière senior avec l'équipe réserve et a commencé à s'entraîner avec l'équipe première en 2021. Il a fait ses débuts professionnels avec Lorient lors d'une victoire 2-1 en Ligue 1 contre Lille le 10 septembre 2021.
-
-Le 3 février 2025, Le Bris a été prêté à Guingamp en Ligue 2. 
-        </p>
-            <div class="photo-container"><!-- Photos ici --></div>
+            <p>Issu du centre de formation de Lorient, Le Bris a commencé sa carrière senior avec l'équipe réserve et a commencé à s'entraîner avec l'équipe première en 2021.</p>
+            <div class="photo-container"></div>
         </div>
 
         <div id="carriere" class="section">
             <h2>Carrière</h2>
-            <p>Joueur du FC Lorient prêté sans option d’achat a L'En Avant Guingamp jusqu'a la fin de saison</p>
-            <div class="photo-container"><!-- Photos ici --></div>
+            <p>Joueur du FC Lorient prêté sans option d’achat à L'En Avant Guingamp jusqu'à la fin de saison.</p>
+            <div class="photo-container"></div>
         </div>
 
         <div id="statistiques" class="section">
@@ -162,20 +163,17 @@ Le 3 février 2025, Le Bris a été prêté à Guingamp en Ligue 2.
                 <p>Passes décisives : 0</p>
                 <p>Note moyenne : 6.65 (FotMob)</p>
             </div>
-            <div class="photo-container"><!-- Photos ici --></div>
-        </div> <img src="https://media.letelegramme.fr/api/v1/images/view/67a797204419390c6144d48b/web_golden_xl/67a797204419390c6144d48b.1" alt="Théo Le Bris maillot EAG">
-
+            <div class="photo-container">
+                <img src="https://media.letelegramme.fr/api/v1/images/view/67a797204419390c6144d48b/web_golden_xl/67a797204419390c6144d48b.1" alt="Théo Le Bris maillot EAG">
+            </div>
+        </div>
 
         <div id="palmares" class="section">
             <h2>Palmarès</h2>
             <p>Tournoi Maurice Revello (France U20)</p>
-            <div class="photo-container"><!-- Photos ici --></div>
-        </div> <img src="https://www.fclorient.bzh/voy_content/uploads/2022/06/theo-le-bris.jpg" alt="Théo Le Bris maillot equipe de France">
-
-
-        <div id="photos" class="section">
-            <h2>Photos</h2>
-            <div class="photo-container"><!-- Galerie de photos ici --></div>
+            <div class="photo-container">
+                <img src="https://www.fclorient.bzh/voy_content/uploads/2022/06/theo-le-bris.jpg" alt="Théo Le Bris maillot équipe de France">
+            </div>
         </div>
     </div>
 
@@ -184,7 +182,10 @@ Le 3 février 2025, Le Bris a été prêté à Guingamp en Ligue 2.
             document.querySelectorAll('.section').forEach(section => {
                 section.style.display = 'none';
             });
-            document.getElementById(sectionId).style.display = 'block';
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.style.display = 'block';
+            }
         }
     </script>
 </body>
